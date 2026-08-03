@@ -101,6 +101,39 @@ const downloadTemplate = (fileName, content) => {
   URL.revokeObjectURL(url);
 };
 
+const ensureDemoData = () => {
+  const existingUser = localStorage.getItem('nexovendas-user');
+  if (!existingUser) {
+    const demoUser = {
+      name: 'Demo Admin',
+      email: 'demo@nexovendas.com',
+      password: '123456',
+      role: 'admin',
+    };
+    localStorage.setItem('nexovendas-user', JSON.stringify(demoUser));
+  }
+
+  if (!localStorage.getItem('nexovendas-customers')) {
+    localStorage.setItem('nexovendas-customers', JSON.stringify([
+      { name: 'Maria Silva', segment: 'Saúde', status: 'Novo', value: 1250 },
+      { name: 'José Pereira', segment: 'Indústria', status: 'Em negociação', value: 5400 },
+    ]));
+  }
+
+  if (!localStorage.getItem('nexovendas-orders')) {
+    localStorage.setItem('nexovendas-orders', JSON.stringify([
+      { number: '1001', customer: 'Maria Silva', value: 1250, status: 'Pendente' },
+      { number: '1002', customer: 'José Pereira', value: 5400, status: 'Aprovado' },
+    ]));
+  }
+
+  if (!localStorage.getItem('nexovendas-sellers')) {
+    localStorage.setItem('nexovendas-sellers', JSON.stringify([
+      { name: 'Ana Souza', email: 'ana@empresa.com', password: '123456', role: 'vendedor' },
+    ]));
+  }
+};
+
 const mapCustomerRecord = (record) => ({
   name: String(getFieldValue(record, ['name', 'nome', 'cliente', 'customer', 'client', 'titulo']) || '').trim(),
   segment: String(getFieldValue(record, ['segment', 'segmento', 'categoria', 'tipo']) || '').trim(),
@@ -123,6 +156,8 @@ const mapSellerRecord = (record) => ({
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  ensureDemoData();
+
   const form = document.getElementById('lead-form');
   const status = document.getElementById('form-status');
   const faqItems = document.querySelectorAll('.faq-list details');
@@ -190,7 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const user = JSON.parse(localStorage.getItem('nexovendas-user') || 'null');
-      if (user?.email === email && user?.role === role) {
+      const passwordMatches = user?.password ? user.password === password : true;
+      if (user?.email === email && user?.role === role && passwordMatches) {
         localStorage.setItem('nexovendas-session', 'active');
         localStorage.setItem('nexovendas-role', role);
         window.location.href = 'dashboard.html';
