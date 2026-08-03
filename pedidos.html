@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedidos | NexoVendas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="pedidos">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="index.html">NexoVendas</a>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html">Painel</a>
+          <a href="clientes.html" data-module="clientes">Clientes</a>
+          <a class="active" href="pedidos.html" data-module="pedidos">Pedidos</a>
+          <a href="estoque.html" data-module="estoque">Estoque</a>
+        </nav>
+        <button id="logout-btn" class="btn btn-secondary" type="button">Sair</button>
+      </aside>
+
+      <main class="app-main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Operação</p>
+            <h1>Pedidos e follow-up</h1>
+          </div>
+        </header>
+
+        <section class="panel form-panel">
+          <form id="order-form" class="app-form">
+            <input type="text" name="number" placeholder="Número do pedido" required />
+            <input type="text" name="customer" placeholder="Cliente" required />
+            <input type="number" name="value" placeholder="Valor" required />
+            <input type="text" name="status" placeholder="Status" required />
+            <button class="btn btn-primary" type="submit">Salvar pedido</button>
+          </form>
+          <p id="order-status" class="form-status"></p>
+        </section>
+
+        <section class="panel form-panel">
+          <h2>Importar base de pedidos</h2>
+          <form id="order-import-form" class="app-form import-form">
+            <input id="order-import-file" type="file" accept=".csv,.json" required />
+            <button class="btn btn-secondary" type="submit">Importar CSV/JSON</button>
+          </form>
+          <div class="import-actions">
+            <label><input id="order-replace-data" type="checkbox" /> Substituir dados existentes</label>
+            <button id="order-download-template" class="btn btn-secondary small" type="button">Baixar modelo</button>
+          </div>
+          <p id="order-import-status" class="form-status"></p>
+          <p class="muted-text">Aceita arquivos com campos como número, cliente, valor e status.</p>
+        </section>
+
+        <section class="panel">
+          <div id="orders-list" class="card-grid compact"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

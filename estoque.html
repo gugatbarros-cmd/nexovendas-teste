@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estoque | NexoVendas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="estoque">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="index.html">NexoVendas</a>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html">Painel</a>
+          <a href="clientes.html" data-module="clientes">Clientes</a>
+          <a href="pedidos.html" data-module="pedidos">Pedidos</a>
+          <a class="active" href="estoque.html" data-module="estoque">Estoque</a>
+        </nav>
+        <button id="logout-btn" class="btn btn-secondary" type="button">Sair</button>
+      </aside>
+
+      <main class="app-main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Operação</p>
+            <h1>Controle de estoque</h1>
+          </div>
+          <a class="btn btn-primary" href="#">Atualizar estoque</a>
+        </header>
+
+        <section class="panel">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Qtd.</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Produto A</td><td>45</td><td>Disponível</td></tr>
+              <tr><td>Produto B</td><td>8</td><td>Baixo estoque</td></tr>
+              <tr><td>Produto C</td><td>120</td><td>Disponível</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

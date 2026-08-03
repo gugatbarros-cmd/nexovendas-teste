@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes | NexoVendas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="clientes">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="index.html">NexoVendas</a>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html">Painel</a>
+          <a class="active" href="clientes.html" data-module="clientes">Clientes</a>
+          <a href="pedidos.html" data-module="pedidos">Pedidos</a>
+          <a href="estoque.html" data-module="estoque">Estoque</a>
+        </nav>
+        <button id="logout-btn" class="btn btn-secondary" type="button">Sair</button>
+      </aside>
+
+      <main class="app-main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">CRM</p>
+            <h1>Gestão de clientes</h1>
+          </div>
+        </header>
+
+        <section class="panel form-panel">
+          <form id="customer-form" class="app-form">
+            <input type="text" name="name" placeholder="Nome do cliente" required />
+            <input type="text" name="segment" placeholder="Segmento" required />
+            <input type="text" name="status" placeholder="Status" required />
+            <input type="number" name="value" placeholder="Valor estimado" required />
+            <button class="btn btn-primary" type="submit">Salvar cliente</button>
+          </form>
+          <p id="customer-status" class="form-status"></p>
+        </section>
+
+        <section class="panel form-panel">
+          <h2>Importar base de clientes</h2>
+          <form id="customer-import-form" class="app-form import-form">
+            <input id="customer-import-file" type="file" accept=".csv,.json" required />
+            <button class="btn btn-secondary" type="submit">Importar CSV/JSON</button>
+          </form>
+          <div class="import-actions">
+            <label><input id="customer-replace-data" type="checkbox" /> Substituir dados existentes</label>
+            <button id="customer-download-template" class="btn btn-secondary small" type="button">Baixar modelo</button>
+          </div>
+          <p id="customer-import-status" class="form-status"></p>
+          <p class="muted-text">Use CSV ou JSON com colunas como nome, segmento, status e valor.</p>
+        </section>
+
+        <section class="panel">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Segmento</th>
+                <th>Status</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody id="customer-table-body"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

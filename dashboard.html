@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel | NexoVendas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="dashboard">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="index.html">NexoVendas</a>
+        <nav class="sidebar-nav">
+          <a class="active" href="dashboard.html">Painel</a>
+          <a href="clientes.html" data-module="clientes">Clientes</a>
+          <a href="pedidos.html" data-module="pedidos">Pedidos</a>
+          <a href="estoque.html" data-module="estoque">Estoque</a>
+        </nav>
+        <button id="logout-btn" class="btn btn-secondary" type="button">Sair</button>
+      </aside>
+
+      <main class="app-main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Sistema de vendas</p>
+            <h1>Bem-vindo, <span id="user-name">usuário</span></h1>
+          </div>
+          <a class="btn btn-primary" href="pedidos.html">Novo pedido</a>
+        </header>
+
+        <section class="summary-grid">
+          <article class="summary-card">
+            <h3>Receita</h3>
+            <strong>R$ 84.250</strong>
+            <p>+12% este mês</p>
+          </article>
+          <article class="summary-card">
+            <h3>Pedidos</h3>
+            <strong>128</strong>
+            <p>28 em análise</p>
+          </article>
+          <article class="summary-card">
+            <h3>Clientes</h3>
+            <strong>376</strong>
+            <p>83 novos este mês</p>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <article class="panel">
+            <h2>Últimos pedidos</h2>
+            <ul id="recent-orders" class="list"></ul>
+          </article>
+          <article class="panel">
+            <h2>Funil comercial</h2>
+            <div class="pipeline">
+              <div><span>Prospecção</span><strong>41</strong></div>
+              <div><span>Negociação</span><strong>18</strong></div>
+              <div><span>Fechamento</span><strong>12</strong></div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

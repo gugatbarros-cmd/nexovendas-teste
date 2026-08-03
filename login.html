@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acesso ao Sistema | NexoVendas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="auth">
+    <header class="site-header">
+      <a class="brand" href="index.html">NexoVendas</a>
+      <nav class="site-nav">
+        <a href="index.html">Apresentação</a>
+        <a href="dashboard.html">Painel</a>
+      </nav>
+    </header>
+
+    <main class="auth-shell">
+      <section class="auth-card">
+        <div class="auth-tabs">
+          <button class="tab-btn active" type="button" data-mode="login">Entrar</button>
+          <button class="tab-btn" type="button" data-mode="register">Criar conta</button>
+        </div>
+
+        <form id="auth-form" class="auth-form">
+          <label id="name-field-wrapper" class="hidden">
+            Nome
+            <input type="text" name="name" placeholder="Seu nome" />
+          </label>
+          <label>
+            E-mail
+            <input type="email" name="email" placeholder="seu@email.com" required />
+          </label>
+          <label>
+            Senha
+            <input type="password" name="password" placeholder="********" required />
+          </label>
+          <label>
+            Perfil
+            <select name="role">
+              <option value="vendedor">Vendedor</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </label>
+          <button class="btn btn-primary" type="submit">Entrar</button>
+        </form>
+        <p id="auth-status" class="form-status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
