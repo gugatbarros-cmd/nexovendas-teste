@@ -188,6 +188,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentPage = document.body.dataset.page;
 
   if (authForm && authStatus) {
+    const demoEmail = 'demo@nexovendas.com';
+    const demoPassword = '123456';
+    const demoRole = 'admin';
+
+    const autoLoginDemo = () => {
+      const existingSession = localStorage.getItem('nexovendas-session');
+      if (existingSession) return;
+
+      const demoUser = {
+        name: 'Demo Admin',
+        email: demoEmail,
+        password: demoPassword,
+        role: demoRole,
+      };
+      localStorage.setItem('nexovendas-user', JSON.stringify(demoUser));
+      localStorage.setItem('nexovendas-session', 'active');
+      localStorage.setItem('nexovendas-role', demoRole);
+      window.location.href = 'dashboard.html';
+    };
+
+    const loginInputs = authForm.querySelectorAll('input, select');
+    loginInputs.forEach((input) => {
+      input.addEventListener('focus', () => {
+        authStatus.textContent = '';
+      });
+    });
+
     let mode = 'login';
 
     tabButtons.forEach((button) => {
@@ -202,6 +229,8 @@ document.addEventListener('DOMContentLoaded', () => {
         authForm.querySelector('button').textContent = isRegister ? 'Criar conta' : 'Entrar';
       });
     });
+
+    autoLoginDemo();
 
     authForm.addEventListener('submit', (event) => {
       event.preventDefault();
